@@ -33,15 +33,15 @@ object WallService {
 
     // обновление поста
     fun update(id: Int, text: String, friendsOnly: Boolean, count: Int): Boolean {
-        var a: Boolean = false
         for ((index, post) in posts.withIndex()) {
             if (post.id == id) {
                 //newId++
                 posts[index] =
                     post.copy(id = id, text = text, friendsOnly = friendsOnly, count = count)
-                a = true
+               return true
             }
-        } ; return a
+        }
+        return false
     }
     // печать выбранного по ID поста
     fun print(id: Int){
