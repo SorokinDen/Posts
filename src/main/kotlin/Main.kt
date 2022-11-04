@@ -12,7 +12,8 @@ data class Post(
     val friendsOnly: Boolean = false,
     val likes: Int = 0,
     val count: Int = 0,
-    val id: Int = 0 // id записи
+    val id: Int = 0, // id записи
+    val repost: Post? = null
 )
 
 
@@ -83,10 +84,12 @@ object Likes{
 }
 fun main(){
     val post = Post()
+    val repost = Post(repost = post)
     WallService.add(post)
+    WallService.add(repost)
     WallService.printAll()
 
-    WallService.add(Post(text = "Cool"))
+   /* WallService.add(Post(text = "Cool"))
     WallService.add(Post(text = "NewCool"))
     Likes.like(1)
     WallService.print(1)
@@ -99,5 +102,5 @@ fun main(){
     val d = WallService.update(3, "up", true, 2)
     println(c)
     println(d)
-    WallService.printAll()
+    WallService.printAll()*/
 }
