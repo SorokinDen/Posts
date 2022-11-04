@@ -4,16 +4,23 @@ import WallService.posts
 
 
 data class Post(
-
-    val onwerId: Int = 0, // id владельца
+    val id: Int = 0, // id записи
+    val ownerId: Int = 0, // id владельца
     val fromId: Int = 0,
+    val created_by: Int = 0,
     val date: Int = 0,
     val text: String = "Text",
+    val replyOwnerId: Int = 0,
+    val replyPostId: Int = 0,
     val friendsOnly: Boolean = false,
+    val comments: Comment? = null,
+    val copyright: String = "Original",
     val likes: Int = 0,
     val count: Int = 0,
-    val id: Int = 0, // id записи
-    val repost: Post? = null
+    val repost: Post? = null,
+    val views: Views? = null,
+    val postType: String = "Post", // Post, Copy, Reply, Postpone, Suggest
+    val postSource: String = "Source"
 )
 
 
@@ -22,8 +29,9 @@ object WallService {
     var posts = emptyArray<Post>()
     var newId: Int = 0
 
-    fun clear() {
+    fun clean() {
         posts = emptyArray()
+        newId = 0
     }
 
     // добавляем пост и присваиваем ему ID
@@ -82,6 +90,16 @@ object Likes{
         }
     }
 }
+
+object Comment{
+    //TODO
+}
+
+object Views{
+    //TODO
+}
+
+
 fun main(){
     val post = Post()
     val repost = Post(repost = post)

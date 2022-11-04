@@ -8,37 +8,52 @@ class MainTest {
 
     @Before
     fun clearBeforeTest() {
-        WallService.clear()
+        WallService.clean()
     }
-
 
 
     @Test
     fun addTest() {
-        val post = Post(1,2,3,"Test", true, 5, 6, 7)
+        val post = Post(
+            1,
+            2,
+            3,
+            4,
+            5,
+            "text",
+            6,
+            7,
+            true,
+            null,
+            "original",
+            0,
+            0,
+            null,
+            null,
+            "Post",
+            "Source"
+        )
+
         WallService.add(post)
         val result = "${post.id}"
-        assertEquals("7", result)
+        assertEquals("1", result)
 
     }
 
     @Test
     fun updateTrue() {
-        val post = Post(1,2,3,"sd", true, 5,6,1)
+        val post = Post(1)
         WallService.add(post)
-        val result = WallService.update(3, "update", true, 6)
-        val a = post.id
+        val result = WallService.update(1, "update", true, 6)
         assertTrue(result)
     }
 
     @Test
     fun updateFalse() {
-        val post = Post(1,2,3,"Test", true, 5, 6, 1)
+        val post = Post(1)
         WallService.add(post)
         val result = WallService.update(9, "update", true, 2)
         assertFalse(result)
     }
-
-
 
 }
